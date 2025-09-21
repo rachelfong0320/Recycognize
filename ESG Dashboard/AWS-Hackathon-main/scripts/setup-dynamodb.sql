@@ -1,0 +1,40 @@
+-- DynamoDB Table Setup Script
+-- This would be executed using AWS CLI or CDK in production
+
+-- Create table for FMCG brand data
+-- aws dynamodb create-table \
+--   --table-name FMCGBrandData \
+--   --attribute-definitions \
+--     AttributeName=id,AttributeType=S \
+--     AttributeName=brand,AttributeType=S \
+--     AttributeName=timestamp,AttributeType=S \
+--   --key-schema \
+--     AttributeName=id,KeyType=HASH \
+--   --global-secondary-indexes \
+--     IndexName=BrandTimestampIndex,KeySchema=[{AttributeName=brand,KeyType=HASH},{AttributeName=timestamp,KeyType=RANGE}],Projection={ProjectionType=ALL},ProvisionedThroughput={ReadCapacityUnits=5,WriteCapacityUnits=5} \
+--   --provisioned-throughput \
+--     ReadCapacityUnits=10,WriteCapacityUnits=10
+
+-- Sample data structure:
+-- {
+--   "id": "detection-001",
+--   "brand": "Coca-Cola",
+--   "material": "Plastic Bottle",
+--   "imageUrl": "s3://bucket/image.jpg",
+--   "confidence": {
+--     "brand_recognition": 0.95,
+--     "material_detection": 0.88
+--   },
+--   "timestamp": "2024-01-15T10:30:00Z",
+--   "location": "Store-123",
+--   "metadata": {
+--     "camera_id": "cam-001",
+--     "processing_time": 0.234
+--   }
+-- }
+
+-- Environment variables needed:
+-- AWS_REGION=us-east-1
+-- DYNAMODB_TABLE_NAME=FMCGBrandData
+-- AWS_ACCESS_KEY_ID=your-access-key
+-- AWS_SECRET_ACCESS_KEY=your-secret-key
