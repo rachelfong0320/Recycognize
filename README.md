@@ -73,15 +73,20 @@ Why this happens:
    cd "Consumer App"
    npm install
    ```
-3. Install dependencies for ESG Dashboard:
+3. Install dependencies for the RVM Software
+    ```powershell
+   cd "RVM Software/rvm-screen"
+   npm install
+   ```
+4. Install dependencies for ESG Dashboard:
    ```powershell
    cd "../ESG Dashboard/AWS-Hackathon-main"
    npm install
    ```
-4. Set up AWS Lambda functions:
+5. Set up AWS Lambda functions:
    - Configure your AWS credentials.
    - Deploy Python scripts in `AWS-lambda/` to AWS Lambda.
-5. (Optional) Set up environment variables as needed for API keys and AWS credentials.
+6. (Optional) Set up environment variables as needed for API keys and AWS credentials.
 
 ## Usage
 - **Consumer App:**
@@ -90,6 +95,12 @@ Why this happens:
     npm start
     ```
   - Use Expo Go or a compatible emulator to run the mobile app.
+- **RVM Software:**
+  - Start the software:
+    ```powershell
+    npm run dev
+    ```
+  - Access the dashboard via `http://localhost:3001` in your browser.
 - **ESG Dashboard:**
   - Start the dashboard:
     ```powershell
